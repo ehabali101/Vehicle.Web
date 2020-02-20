@@ -1,0 +1,22 @@
+<h2>Vehicles</h2>
+<div class="well">
+  <div class="form-group">
+    <lable for="customer">Customer</lable>
+    <select id="customer" class="form-control" [(ngModel)]="filter.customerId" (change)="onFilterChange()">
+      <option value=""></option>
+      <option *ngFor="let c of customers" value="{{ c.Id }}">{{ c.name }}</option>
+    </select>
+  </div>
+  <button class="btn btn-default" (click)="resetFilter()">Reset</button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Vehicle Id</th>
+      <th>Registration Number</th>
+      <th>Customer Name</th>
+      <th>Vehicle Status</th>
+    </tr>
+  </thead>
+</table>

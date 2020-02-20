@@ -28,12 +28,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\customer.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CustomerResources">
       <HintPath>..\..\CustomerApi\CustomerResources\bin\Debug\netcoreapp3.1\CustomerResources.dll</HintPath>
     </Reference>
     <Reference Include="VehicleResources">
       <HintPath>..\..\VehicleApi\VehicleResources\bin\Debug\netcoreapp3.1\VehicleResources.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\customer.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

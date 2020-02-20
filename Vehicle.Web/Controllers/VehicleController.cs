@@ -21,13 +21,22 @@ namespace Vehicle.Web.Controllers
             _customerApiClient = customerApiClient;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet]
+        [Route("Vehicles")]
         public IEnumerable<VehicleViewModel> GetVehicles()
         {
             return GetVehicleViewModel();
-        }        
+        }
 
-        [HttpGet("[action]")]
+        [HttpGet]
+        [Route("Customers")]
+        public IEnumerable<CustomerResource> GetCustomers()
+        {
+            return _customerApiClient.GetCustomers().Result;
+        }
+
+        [HttpGet]
+        [Route("SyncVehicles")]
         public IEnumerable<VehicleViewModel> SyncVehicles()
         {
             var vehicles = _vehicleApiClient.GetVehicles().Result;

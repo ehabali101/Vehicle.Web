@@ -34,7 +34,7 @@ import { AppErrorHandler } from './app.error-handler';
     ])
   ],
   providers: [
-    { provide: ErrorHandler, userClass: AppErrorHandler }, VehicleService],
+     VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

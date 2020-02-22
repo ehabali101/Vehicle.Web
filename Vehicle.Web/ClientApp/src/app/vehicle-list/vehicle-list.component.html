@@ -1,10 +1,24 @@
 <h2>Vehicles</h2>
 <div class="well">
   <div class="form-group">
-    <lable for="customer">Customer</lable>
-    <select id="customer" class="form-control" [(ngModel)]="filter.customerId" (change)="onFilterChange()">
+    <label for="customer">Customer</label>
+    <select id="customer" class="form-control" [(ngModel)]="filter.customer" (change)="onFilterChange()">
+    <option value=""></option>
+    <option *ngFor="let c of customers" value="{{ c.name }}" >{{ c.name }}</option>
+  </select>
+  <!--<select id="customer" class="form-control" [(ngModel)]="filter.customerId" (change)="onFilterChange()">
+    <option value=""></option>
+    <option value="9497219c-d4d1-4bfb-97bd-83fc86e8c094">Kalles Grustransporter AB</option>
+    <option value="b10d01ca-42de-4318-9788-8672046b4c65">Johans Bulk AB</option>
+    <option value="5cc5b374-4674-4985-ae70-9c1e8735d165">Haralds Värdetransporter ABs</option>
+  </select>-->
+  </div>
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select id="status" class="form-control" [(ngModel)]="filter.vehicleStatus" (change)="onFilterChange()">
       <option value=""></option>
-      <option *ngFor="let c of customers" value="{{ c.Id }}">{{ c.name }}</option>
+      <option value="Disconnected">Disconnected</option>
+      <option value="Connected">Connected</option>
     </select>
   </div>
   <button class="btn btn-default" (click)="resetFilter()">Reset</button>
@@ -17,6 +31,18 @@
       <th>Registration Number</th>
       <th>Customer Name</th>
       <th>Vehicle Status</th>
+      <th></th>
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let v of vehicles">
+      <td>{{ v.vehicleId }}</td>
+      <td>{{ v.registrationNumber }}</td>
+      <td>{{ v.customerName }}</td>
+      <td>{{ v.vehicleStatus }}</td>
+      <td>
+        <i [hidden]="!v.isConnected" class="fa fa-wifi fa-1x"></i>
+      </td>
+    </tr>
+  </tbody>
 </table>

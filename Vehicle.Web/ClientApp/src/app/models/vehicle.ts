@@ -1,8 +1,9 @@
 export interface vehicle {
-  id: string,
-  status: string,
+  vehicleId: string,
+  vehicleStatus: string,
   registrationNumber: string,
   customerId: string,
   customerName: string,
-  customerAddress: string
+  customerAddress: string,
+  isConnected: boolean
 }

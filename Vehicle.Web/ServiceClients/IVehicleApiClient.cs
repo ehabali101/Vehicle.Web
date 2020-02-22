@@ -9,7 +9,7 @@ namespace Vehicle.Web.ServiceClients
     public interface IVehicleApiClient
     {
         Task<IEnumerable<VehicleResource>> GetVehicles();
-        Task<VehicleResource> UpdateStatus(VehicleResource vehicle);
+        void UpdateStatus(VehicleResource vehicle);
         Task<IEnumerable<VehicleOwnersResource>> GetVehicleOwners();
     }
 }

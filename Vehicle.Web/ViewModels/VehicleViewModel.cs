@@ -18,5 +18,7 @@ namespace Vehicle.Web.ViewModels
         public string CustomerName { get; set; }
   
         public string CustomerAddress { get; set; }
+
+        public bool IsConnected { get; set; }
     }
 }

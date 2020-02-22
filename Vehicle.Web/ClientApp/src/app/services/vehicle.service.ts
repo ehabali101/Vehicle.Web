@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { customer } from '../models/customer';
+import { vehicle } from '../models/vehicle';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
 
-  constructor(private http: Http) {
+  constructor() { }
+
+  getcustomers(http: HttpClient, baseUrl: string): Observable<customer[]> {
+    return http.get<customer[]>(baseUrl + 'api/vehicle/Customers');
   }
 
-  getVehicles() {
-    return this.http.get('/api/vehicle/vehicles')
-      .map(res => res.json());
+  getvehicles(http: HttpClient, baseUrl: string): Observable<vehicle[]> {
+    return http.get<vehicle[]>(baseUrl + 'api/vehicle/Vehicles');
   }
 
-  getCustomers() {
-    return this.http.get('/api/vehicle/customers')
-      .map(res => res.json());
+  syncVehicles(http: HttpClient, baseUrl: string): Observable<vehicle[]> {
+    return http.get<vehicle[]>(baseUrl + 'api/vehicle/SyncVehicles');
   }
 
-  syncVehicles() {
-    return this.http.get('/api/vehicle/syncvehicles')
-      .map(res => res.json());
-  }
 }

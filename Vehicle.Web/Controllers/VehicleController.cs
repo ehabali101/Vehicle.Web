@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomerResources;
 using Microsoft.AspNetCore.Mvc;
 using Vehicle.Web.ServiceClients;
 using Vehicle.Web.ViewModels;
@@ -43,12 +44,19 @@ namespace Vehicle.Web.Controllers
             Random rand = new Random();
             foreach (var vehicle in vehicles)
             {           
-                var newStatus = rand.Next(2) == 0? 1 : 2;
+                var newStatus = rand.Next(2) == 0? VehicleStatusResource.Connected : VehicleStatusResource.Disconnected;
                 vehicle.Status = (VehicleStatusResource)newStatus;
                 _vehicleApiClient.UpdateStatus(vehicle);
             }
 
             return GetVehicleViewModel();
+        }
+
+        [HttpPut]
+        [Route("UpdateStatus")]
+        public void UpdateStatus([FromBody]VehicleResource vehicle)
+        {  
+               _vehicleApiClient.UpdateStatus(vehicle);
         }
 
         private IEnumerable<VehicleViewModel> GetVehicleViewModel()
@@ -71,6 +79,7 @@ namespace Vehicle.Web.Controllers
                 model.CustomerName = customer.Name;
                 model.CustomerAddress = customer.Address;
                 model.VehicleStatus = Enum.GetName(typeof(VehicleStatusResource), vehicle.Status);
+                model.IsConnected = vehicle.Status == VehicleStatusResource.Connected ? true : false;
 
                 monitorList.Add(model);
             }

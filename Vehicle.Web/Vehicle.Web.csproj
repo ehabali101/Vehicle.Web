@@ -17,7 +17,6 @@
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,24 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\models\customer.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="CustomerResources">
-      <HintPath>..\..\CustomerApi\CustomerResources\bin\Debug\netcoreapp3.1\CustomerResources.dll</HintPath>
-    </Reference>
-    <Reference Include="VehicleResources">
-      <HintPath>..\..\VehicleApi\VehicleResources\bin\Debug\netcoreapp3.1\VehicleResources.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="ClientApp\src\app\services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\models\customer.ts" />
+    <Reference Include="CustomerResources">
+      <HintPath>..\..\..\Source\Repos\CustomerApi\CustomerResources\bin\Debug\netcoreapp3.1\CustomerResources.dll</HintPath>
+    </Reference>
+    <Reference Include="VehicleResources">
+      <HintPath>..\..\..\Source\Repos\VehicleApi\VehicleResources\bin\Debug\netcoreapp3.1\VehicleResources.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

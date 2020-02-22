@@ -20,7 +20,6 @@ namespace Vehicle.Web.ServiceClients
             _client = client;
 
             _client.BaseAddress = new Uri(_configuration.GetSection("VehicleApi").GetValue<string>("Url"));
-            _client.DefaultRequestHeaders.Add("Content-type", "application/json");
         }
 
         public async Task<IEnumerable<VehicleResource>> GetVehicles()
@@ -29,13 +28,11 @@ namespace Vehicle.Web.ServiceClients
             return await response.Content.ReadAsAsync<IEnumerable<VehicleResource>>();
         }
 
-        public async Task<VehicleResource> UpdateStatus(VehicleResource vehicle)
+        public  void UpdateStatus(VehicleResource vehicle)
         {
             var jsonModel = JsonConvert.SerializeObject(vehicle);
-            var response = await _client.PutAsync(new Uri($"{_client.BaseAddress}/vehicles/{vehicle.Id}"),
-                new StringContent(jsonModel));
-
-            return await response.Content.ReadAsAsync<VehicleResource>();
+            var response =  _client.PutAsync(new Uri($"{_client.BaseAddress}/vehicles/{vehicle.Id}"),
+                new StringContent(jsonModel, Encoding.UTF8, "application/json"));
         }
 
         public async Task<IEnumerable<VehicleOwnersResource>> GetVehicleOwners()

@@ -19,7 +19,6 @@ namespace Vehicle.Web.ServiceClients
             _client = client;
 
             _client.BaseAddress = new Uri(_configuration.GetSection("CustomerApi").GetValue<string>("Url"));
-            _client.DefaultRequestHeaders.Add("Content-type", "application/json");
         }
 
         public async Task<IEnumerable<CustomerResource>> GetCustomers()

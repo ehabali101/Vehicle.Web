@@ -28,14 +28,15 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="PrivateReferences\" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="CustomerResources">
-      <HintPath>..\..\..\Source\Repos\CustomerApi\CustomerResources\bin\Debug\netcoreapp3.1\CustomerResources.dll</HintPath>
+      <HintPath>PrivateReferences\CustomerResources.dll</HintPath>
     </Reference>
     <Reference Include="VehicleResources">
-      <HintPath>..\..\..\Source\Repos\VehicleApi\VehicleResources\bin\Debug\netcoreapp3.1\VehicleResources.dll</HintPath>
+      <HintPath>PrivateReferences\VehicleResources.dll</HintPath>
     </Reference>
   </ItemGroup>
 
